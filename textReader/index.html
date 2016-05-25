@@ -100,7 +100,6 @@
 				bottom:0;
 				height:70px;
 				width: 100%;
-				background:none;
 				color:#d5d5d6;
 				font-size: 14px;
 				z-index: 10001;
@@ -291,14 +290,26 @@
 			.bk-btn-five{
 				background:#2b3347;
 			}
-
+			.artical-action-mid{
+				position: fixed;
+				z-index: 10002;
+				width: 100%;
+				height: 40%;
+				top:30%;
+			}
 
 
 		</style>
 	</head>
 	<body>
 		<div id="root" class="container">
-		<div id="top-nav" class="top-nav"><!-- 头部菜单 -->
+			<!-- 点击唤出菜单功能 -->
+			<div class="m-artical-action">
+				<div class="artical-action-mid" id="action-mid"></div>
+			</div>
+
+
+		<div id="top-nav" class="top-nav" style="display:none"><!-- 头部菜单 -->
 			<div class="icon-back"></div>
 			<div class="nav-title">返回书架</div>
 		</div>
@@ -330,8 +341,8 @@
 			</div><!-- 下一章上一章 -->
 
 			<!-- 底部菜单 -->
-		<div class="bottom-nav-bk"></div>
-		<div id="bottom-nav" class="bottom-nav">
+		<div class="bottom-nav bottom-nav-bk"   style="display:none"></div>
+		<div id="bottom-nav" class="bottom-nav"  style="display:none">
 			<div class="bottom-nav-left">
 				<div class="icon-content"></div>
 				<div class="nav-bottom-content">目录</div>
@@ -344,11 +355,16 @@
 				<div class="icon-night"></div>
 				<div class="nav-bottom-time">夜间</div>
 			</div>
+
+			<div class="bottom-nav-right" style="display:none">
+				<div class="icon-daytime"></div>
+				<div class="nav-bottom-time">白天</div>
+			</div>
 		</div>
 
 		<!-- 底部控制颜色字体大小 -->
-		<div class="nav-panel-bk"></div><!-- 背景 -->
-		<div class="nav-panel" id="font-container">
+		<div class="nav-panel-bk" style="display:none"></div><!-- 背景 -->
+		<div class="nav-panel" id="font-container" style="display:none">
 			<div class="child-mod">
 				<span>字号</span>
 				<button id="large-font" class="font-size-button">大</button>
@@ -379,15 +395,76 @@
 		</div>
 	</div>
 		
-		<script src="lib/zepto.min.js"></script>
+		<script src="lib/zepto.min.js"></script><!-- 使用zepto代替jquery在移动端使jq插件能用 -->
 		<script>
-			window.jQuery = $;
+			window.jQuery = $;//将jq的$指向zepto的$！
 		</script>
-		<script src="js/jquery.base64.js"></script>
-		<script src="js/jquery.jsonp.js"></script>
+		<script src="js/jquery.base64.js"></script><!-- 解析图片 -->
+		<script src="js/jquery.jsonp.js"></script><!-- 跨域 -->
 
 		<script>
-			
+			(function(){
+				var Util=(function(){
+					var prefix='html5_reader_';//localstorage在同一个域名下是共享的，需要区分
+					var StorageGetter=function(key){
+						return localStorage.getItem(prefix+key);
+					}
+					var StorageSetter=function(key,val){
+						return localStorage.setItem(prefix+key,val);
+					}
+					return{
+						StorageGetter:StorageGetter,
+						StorageSetter:StorageSetter
+					}
+				})();
+
+				var Dom={
+					top_nav:$("#top-nav"),
+					bottom_nav:$(".bottom-nav")
+				}//获取顶部底部两个菜单
+
+				//常用的变量
+				var Win=$(window);
+ 				var Doc=$(document);
+				function main(){
+					// todo 整个项目的入口函数
+					EventHanlder();
+				}
+
+
+				function ReaderModel(){
+					//todo 实现和阅读器相关的数据交互的方法
+
+				}
+
+				function ReaderBaseFrame(){
+					//todo 渲染基本的ui结构
+				}
+
+				function EventHanlder(){
+					//todo 交互的事件绑定
+					$("#action-mid").click(function(){
+						//判断是否隐藏
+						if(Dom.top_nav.css("display")=='none'){
+							Dom.top_nav.show();
+							Dom.bottom_nav.show();
+						}else{
+							Dom.top_nav.hide();
+							Dom.bottom_nav.hide();
+						}
+				 	});
+				 	Win.scroll(function(){
+				 		Dom.top_nav.hide();
+						Dom.bottom_nav.hide();
+				 	});
+				}
+
+				main();
+			}) ();//闭包，不污染全局变量
+
+
+
+
 		</script>
 	</body>
 </html>
