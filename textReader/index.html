@@ -354,12 +354,12 @@
 			</div>
 
 			<div id="bottom-nav-right" class="bottom-nav-right">
-				<div class="bottom-nav-right-night">
+				<div class="bottom-nav-right-night" id="bottom-nav-right-night">
 					<div class="icon-night"></div>
 					<div class="nav-bottom-time">夜间</div>	
 				</div>
 
-				<div class="bottom-nav-right-day" style="display:none">
+				<div class="bottom-nav-right-day" style="display:none" id="bottom-nav-right-day">
 					<div class="icon-daytime"></div>
 					<div class="nav-bottom-time">白天</div>
 				</div>
@@ -439,6 +439,7 @@
  				initFontSize=parseInt(initFontSize);
  				if (!initFontSize) {initFontSize=14;}
  				var RootContainer=$('#fiction_container');
+
  				//初始化背景颜色
  				var initBkColor=Util.StorageGetter("background_color");
  				if(!initBkColor){initBkColor="#e9dfc7";}
@@ -448,7 +449,8 @@
  				if(!initBtn){initBtn=1;}
  				//浏览器进入初始化
  				RootContainer.css("font-size",initFontSize);
- 				RootContainer.css("background-color",initBkColor)
+ 				
+ 				$("body").css("background-color",initBkColor)
  				$("#current_"+initBtn).show();
 
 				function main(){
@@ -496,9 +498,19 @@
 
 					//黑夜白天按钮切换
 					$("#bottom-nav-right").click(function(){
-						//todo 触发背景切换的事件
-						//if(){}
-					});
+						if($("#bottom-nav-right-day").css("display")=='none'){
+							$("#bottom-nav-right-day").show();
+							$("#bottom-nav-right-night").hide();
+							turnToNight();
+						}else{
+							$("#bottom-nav-right-day").hide();
+							$("#bottom-nav-right-night").show();
+							turnToDay();
+						}
+
+						
+					});		
+
 
 					//变换字体大小
 					$("#large-font").click(function(){
@@ -538,22 +550,37 @@
 						$("#current_"+i).hide();
 					}
 
-					$("#bk_1").click(function(){
+					function turnToDay(){
 						clear();//所有点击被清除
 						initBkColor="#e9dfc7";
 						initBtn=1;
-						RootContainer.css('background-color',initBkColor);//设置背景颜色
+						$("body").css('background-color',initBkColor);//设置背景颜色
 						$("#current_1").show();//当前按钮设置成点击事件
 						Util.StorageSetter('background_color',initBkColor);
 						Util.StorageSetter('button_number',initBtn);
-						
+					}
+
+					function turnToNight(){
+						clear();
+						initBkColor="#2b3347";
+						initBtn=5;
+						$("body").css('background-color',initBkColor);
+						$("#current_5").show();
+						Util.StorageSetter('background_color',initBkColor);
+						Util.StorageSetter('button_number',initBtn);
+					}
+
+					
+
+					$("#bk_1").click(function(){
+						turnToDay();
 					});
 
 					$("#bk_2").click(function(){
 						clear();
 						initBkColor="#fff";
 						initBtn=2;
-						RootContainer.css('background-color',initBkColor);
+						$("body").css('background-color',initBkColor);
 						$("#current_2").show();
 						Util.StorageSetter('background_color',initBkColor);
 						Util.StorageSetter('button_number',initBtn);
@@ -563,7 +590,7 @@
 						clear();
 						initBkColor="#a4a4a4";
 						initBtn=3;
-						RootContainer.css('background-color',initBkColor);
+						$("body").css('background-color',initBkColor);
 						$("#current_3").show();
 						Util.StorageSetter('background_color',initBkColor);
 						Util.StorageSetter('button_number',initBtn);
@@ -573,20 +600,16 @@
 						clear();
 						initBkColor="#cdeecc";
 						initBtn=4;
-						RootContainer.css('background-color',initBkColor);
+						$("body").css('background-color',initBkColor);
 						$("#current_4").show();
 						Util.StorageSetter('background_color',initBkColor);
 						Util.StorageSetter('button_number',initBtn);
 					});
+
 					$("#bk_5").click(function(){
-						clear();
-						initBkColor="#2b3347";
-						initBtn=5;
-						RootContainer.css('background-color',initBkColor);
-						$("#current_5").show();
-						Util.StorageSetter('background_color',initBkColor);
-						Util.StorageSetter('button_number',initBtn);
+						turnToNight();
 					});
+
 				 	//滑动时隐藏上下的菜单
 				 	Win.scroll(function(){
 				 		Dom.top_nav.hide();
