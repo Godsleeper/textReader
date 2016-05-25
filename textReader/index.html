@@ -15,8 +15,12 @@
 				text-align: left;
 				width:100%;
 				overflow: hidden;
+				
+			}
+			.container{
 				background-color: #e9dfc7;
 			}
+
 			.m-read-content{
 				font-size: 14px;
 				color:#555;
@@ -439,7 +443,7 @@
  				initFontSize=parseInt(initFontSize);
  				if (!initFontSize) {initFontSize=14;}
  				var RootContainer=$('#fiction_container');
-
+ 				var RootBKContainer=$('#root')
  				//初始化背景颜色
  				var initBkColor=Util.StorageGetter("background_color");
  				if(!initBkColor){initBkColor="#e9dfc7";}
@@ -449,8 +453,7 @@
  				if(!initBtn){initBtn=1;}
  				//浏览器进入初始化
  				RootContainer.css("font-size",initFontSize);
- 				
- 				$("body").css("background-color",initBkColor)
+ 				RootBKContainer.css("background-color",initBkColor)
  				$("#current_"+initBtn).show();
 
 				function main(){
@@ -554,7 +557,7 @@
 						clear();//所有点击被清除
 						initBkColor="#e9dfc7";
 						initBtn=1;
-						$("body").css('background-color',initBkColor);//设置背景颜色
+						RootBKContainer.css('background-color',initBkColor);//设置背景颜色
 						$("#current_1").show();//当前按钮设置成点击事件
 						Util.StorageSetter('background_color',initBkColor);
 						Util.StorageSetter('button_number',initBtn);
@@ -564,7 +567,7 @@
 						clear();
 						initBkColor="#2b3347";
 						initBtn=5;
-						$("body").css('background-color',initBkColor);
+						RootBKContainer.css('background-color',initBkColor);
 						$("#current_5").show();
 						Util.StorageSetter('background_color',initBkColor);
 						Util.StorageSetter('button_number',initBtn);
@@ -580,7 +583,7 @@
 						clear();
 						initBkColor="#fff";
 						initBtn=2;
-						$("body").css('background-color',initBkColor);
+						RootBKContainer.css('background-color',initBkColor);
 						$("#current_2").show();
 						Util.StorageSetter('background_color',initBkColor);
 						Util.StorageSetter('button_number',initBtn);
@@ -590,7 +593,7 @@
 						clear();
 						initBkColor="#a4a4a4";
 						initBtn=3;
-						$("body").css('background-color',initBkColor);
+						RootBKContainer.css('background-color',initBkColor);
 						$("#current_3").show();
 						Util.StorageSetter('background_color',initBkColor);
 						Util.StorageSetter('button_number',initBtn);
@@ -600,7 +603,7 @@
 						clear();
 						initBkColor="#cdeecc";
 						initBtn=4;
-						$("body").css('background-color',initBkColor);
+						RootBKContainer.css('background-color',initBkColor);
 						$("#current_4").show();
 						Util.StorageSetter('background_color',initBkColor);
 						Util.StorageSetter('button_number',initBtn);
