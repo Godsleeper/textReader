@@ -272,11 +272,11 @@
 			}
 
 			.bk-btn-one{
-				background:#fff;
+				background:#e9dfc7;
 			}
 
 			.bk-btn-two{
-				background:#e9e0c4;
+				background:#fff;
 			}
 
 			.bk-btn-three{
@@ -343,28 +343,33 @@
 			<!-- 底部菜单 -->
 		<div class="bottom-nav bottom-nav-bk"   style="display:none"></div>
 		<div id="bottom-nav" class="bottom-nav"  style="display:none">
-			<div class="bottom-nav-left">
+			<div class="bottom-nav-left" id="bottom-nav-left">
 				<div class="icon-content"></div>
 				<div class="nav-bottom-content">目录</div>
 			</div>
-			<div class="bottom-nav-mid">
+			<div class="bottom-nav-mid" id="bottom-nav-mid">
 				<div class="icon-font-in"></div>
+				<div class="icon-font-on" style="display:none"></div>
 				<div class="nav-bottom-font">字体</div>
 			</div>
-			<div class="bottom-nav-right">
-				<div class="icon-night"></div>
-				<div class="nav-bottom-time">夜间</div>
-			</div>
 
-			<div class="bottom-nav-right" style="display:none">
-				<div class="icon-daytime"></div>
-				<div class="nav-bottom-time">白天</div>
+			<div id="bottom-nav-right" class="bottom-nav-right">
+				<div class="bottom-nav-right-night">
+					<div class="icon-night"></div>
+					<div class="nav-bottom-time">夜间</div>	
+				</div>
+
+				<div class="bottom-nav-right-day" style="display:none">
+					<div class="icon-daytime"></div>
+					<div class="nav-bottom-time">白天</div>
+				</div>
 			</div>
+			
 		</div>
 
 		<!-- 底部控制颜色字体大小 -->
-		<div class="nav-panel-bk" style="display:none"></div><!-- 背景 -->
-		<div class="nav-panel" id="font-container" style="display:none">
+		<div class="nav-panel-bk font-container" style="display:none"></div><!-- 背景 -->
+		<div class="nav-panel font-container" id="font-container" style="display:none">
 			<div class="child-mod">
 				<span>字号</span>
 				<button id="large-font" class="font-size-button">大</button>
@@ -372,24 +377,24 @@
 			</div>
 			<div class="child-mod">
 				<span>背景</span>
-				<div class="bk-container bk-btn-one">
-					<div class="bk-container-current"></div><!-- 选中时会加一个圈 -->
+				<div class="bk-container bk-btn-one" id="bk_1">
+					<div class="bk-container-current" id="current_1" style="display:none"></div><!-- 选中时会加一个圈 -->
 				</div>
 
-				<div class="bk-container bk-btn-two">
-					<div class="bk-container-current"></div><!-- 选中时会加一个圈 -->
+				<div class="bk-container bk-btn-two" id="bk_2">
+					<div class="bk-container-current" id="current_2" style="display:none"></div><!-- 选中时会加一个圈 -->
 				</div>
 
-				<div class="bk-container bk-btn-three">
-					<div class="bk-container-current"></div><!-- 选中时会加一个圈 -->
+				<div class="bk-container bk-btn-three" id="bk_3">
+					<div class="bk-container-current" id="current_3" style="display:none"></div><!-- 选中时会加一个圈 -->
 				</div>
 
-				<div class="bk-container bk-btn-four">
-					<div class="bk-container-current"></div><!-- 选中时会加一个圈 -->
+				<div class="bk-container bk-btn-four"  id="bk_4">
+					<div class="bk-container-current" id="current_4" style="display:none"></div><!-- 选中时会加一个圈 -->
 				</div>
 
-				<div class="bk-container bk-btn-five">
-					<div class="bk-container-current"></div><!-- 选中时会加一个圈 -->
+				<div class="bk-container bk-btn-five"  id="bk_5">
+					<div class="bk-container-current" id="current_5" style="display:none"></div><!-- 选中时会加一个圈 -->
 				</div>
 			</div>
 		</div>
@@ -420,12 +425,32 @@
 
 				var Dom={
 					top_nav:$("#top-nav"),
-					bottom_nav:$(".bottom-nav")
+					bottom_nav:$(".bottom-nav"),
+					font_container:$(".font-container"),
+					font_button:$("#bottom-nav-mid")
+
 				}//获取顶部底部两个菜单
 
 				//常用的变量
 				var Win=$(window);
  				var Doc=$(document);
+ 				//初始化字号
+ 				var initFontSize=Util.StorageGetter("font_size");
+ 				initFontSize=parseInt(initFontSize);
+ 				if (!initFontSize) {initFontSize=14;}
+ 				var RootContainer=$('#fiction_container');
+ 				//初始化背景颜色
+ 				var initBkColor=Util.StorageGetter("background_color");
+ 				if(!initBkColor){initBkColor="#e9dfc7";}
+ 				//初始化背景选中按钮
+ 				var initBtn=Util.StorageGetter("button_number");
+ 				initBtn=parseInt(initBtn);
+ 				if(!initBtn){initBtn=1;}
+ 				//浏览器进入初始化
+ 				RootContainer.css("font-size",initFontSize);
+ 				RootContainer.css("background-color",initBkColor)
+ 				$("#current_"+initBtn).show();
+
 				function main(){
 					// todo 整个项目的入口函数
 					EventHanlder();
@@ -444,18 +469,131 @@
 				function EventHanlder(){
 					//todo 交互的事件绑定
 					$("#action-mid").click(function(){
-						//判断是否隐藏
+						//判断是否隐藏了上下两个菜单
 						if(Dom.top_nav.css("display")=='none'){
 							Dom.top_nav.show();
 							Dom.bottom_nav.show();
 						}else{
 							Dom.top_nav.hide();
 							Dom.bottom_nav.hide();
+							Dom.font_container.hide();
+							$(".icon-font-in").show();
+							$(".icon-font-on").hide();
 						}
 				 	});
+					//唤出字体面板
+					Dom.font_button.click(function(){
+						if (Dom.font_container.css("display")=='none'){
+							Dom.font_container.show();
+							$(".icon-font-in").hide();
+							$(".icon-font-on").show();
+						}else{
+							Dom.font_container.hide();
+							$(".icon-font-in").show();
+							$(".icon-font-on").hide();
+						}
+					});
+
+					//黑夜白天按钮切换
+					$("#bottom-nav-right").click(function(){
+						//todo 触发背景切换的事件
+						//if(){}
+					});
+
+					//变换字体大小
+					$("#large-font").click(function(){
+						if(initFontSize>20){return;}
+						initFontSize+=1;
+						RootContainer.css('font-size',initFontSize);
+						Util.StorageSetter('font_size',initFontSize);
+					});
+					$("#small-font").click(function(){
+						if(initFontSize<12){return;}
+						initFontSize-=1;
+						RootContainer.css('font-size',initFontSize);
+						Util.StorageSetter('font_size',initFontSize);
+					});
+
+					
+					//变换背景颜色
+
+
+					//封装成方法
+					// for(var i=1;i<=5;i++)
+					// {
+					// 	$("#bk_i").click(function(){
+					// 		$("#current_"+i).hide();
+					// 		if(i==1){initBkColor="#e9dfc7";}
+					// 		else if(i==2){initBkColor="#fff";}
+					// 		else if(i==3){initBkColor="#a4a4a4";}
+					// 		else if(i==4){initBkColor="#cdeecc";}
+					// 		else if(i==5){initBkColor="#2b3347";}
+					// 		RootContainer.css('background-color',initBkColor);
+					// 		$("#current_"+i).show();
+					// 	})
+					// }
+
+					function clear(){
+						for(var i=1;i<=$(".bk-container").length;i++)
+						$("#current_"+i).hide();
+					}
+
+					$("#bk_1").click(function(){
+						clear();//所有点击被清除
+						initBkColor="#e9dfc7";
+						initBtn=1;
+						RootContainer.css('background-color',initBkColor);//设置背景颜色
+						$("#current_1").show();//当前按钮设置成点击事件
+						Util.StorageSetter('background_color',initBkColor);
+						Util.StorageSetter('button_number',initBtn);
+						
+					});
+
+					$("#bk_2").click(function(){
+						clear();
+						initBkColor="#fff";
+						initBtn=2;
+						RootContainer.css('background-color',initBkColor);
+						$("#current_2").show();
+						Util.StorageSetter('background_color',initBkColor);
+						Util.StorageSetter('button_number',initBtn);
+					});
+
+					$("#bk_3").click(function(){
+						clear();
+						initBkColor="#a4a4a4";
+						initBtn=3;
+						RootContainer.css('background-color',initBkColor);
+						$("#current_3").show();
+						Util.StorageSetter('background_color',initBkColor);
+						Util.StorageSetter('button_number',initBtn);
+					});
+
+					$("#bk_4").click(function(){
+						clear();
+						initBkColor="#cdeecc";
+						initBtn=4;
+						RootContainer.css('background-color',initBkColor);
+						$("#current_4").show();
+						Util.StorageSetter('background_color',initBkColor);
+						Util.StorageSetter('button_number',initBtn);
+					});
+					$("#bk_5").click(function(){
+						clear();
+						initBkColor="#2b3347";
+						initBtn=5;
+						RootContainer.css('background-color',initBkColor);
+						$("#current_5").show();
+						Util.StorageSetter('background_color',initBkColor);
+						Util.StorageSetter('button_number',initBtn);
+					});
+				 	//滑动时隐藏上下的菜单
 				 	Win.scroll(function(){
 				 		Dom.top_nav.hide();
 						Dom.bottom_nav.hide();
+						Dom.font_container.hide();
+						$(".icon-font-in").show();
+						$(".icon-font-on").hide();
 				 	});
 				}
 
