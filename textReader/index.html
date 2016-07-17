@@ -12,6 +12,8 @@
 				overflow-x: hidden;
 			}
 			body{
+				margin: 0;
+				padding:0;
 				text-align: left;
 				width:100%;
 				overflow: hidden;
@@ -60,6 +62,7 @@
 			.u-tab li:nth-child(2){
 				border-right: none;
 			}/*使用伪类选择器做清除*/
+
 			.m-button-bar{
 				width: 70%;
 				max-width: 800px;/*非常宽的情况*/
@@ -106,7 +109,7 @@
 				width: 100%;
 				color:#d5d5d6;
 				font-size: 14px;
-				z-index: 10001;
+				z-index: 10005;
 			}
 
 			.bottom-nav-left{
@@ -302,107 +305,171 @@
 				top:30%;
 			}
 
+			.catalog{
+				font-size: 14px;
+				color:#ffffff;
+				line-height: 31px;
+				background-color: #333333;
+				z-index: 10003;
+				width: 100%;
+				position:absolute;
+				left:0;
+				top:0;
+				display:none;
+			}
+
+			.catalog .button-content,.cataloginfo{
+				height:50px;
+				width:100%;
+				border-bottom: 1px solid #ffffff;
+			}
+
+			.catalog .cataloginfo{
+				position: relative;
+			}
+			.catalog .back-button{
+				float:right;
+				margin-right: 20px;
+				color:#fff;
+				line-height: 50px;
+			}
+
+			.cataloginfo .chaptertotal{
+				line-height: 50px;
+				float:left;
+				margin-left: 20px;
+			}
+
+			.cataloginfo .rorder{
+				position:absolute;
+				height:14px;
+				line-height:14px;
+				top:50%;
+				padding: 7px;
+				background-color:#736357;
+				margin-top: -14px;
+				right:40px;
+				font-size:14px;
+			}
+
+			.catacontent{
+				overflow: hidden;
+			}
+			.chaptername{
+				font-size: 16px;
+				padding-left: 30px;
+				border-bottom:1px #fff solid;
+				height : 50px;
+				line-height: 50px;
+			}
+
+
 
 		</style>
 	</head>
 	<body>
 		<div id="root" class="container">
-			<!-- 点击唤出菜单功能 -->
+			<!-- 点击唤出菜单功能 -->		
 			<div class="m-artical-action">
 				<div class="artical-action-mid" id="action-mid"></div>
 			</div>
 
+			<div id="top-nav" class="top-nav" style="display:none">
+				<!-- 头部菜单 -->		
+				<div class="icon-back"></div>
+				<div class="nav-title">返回书架</div>
+			</div>
 
-		<div id="top-nav" class="top-nav" style="display:none"><!-- 头部菜单 -->
-			<div class="icon-back"></div>
-			<div class="nav-title">返回书架</div>
-		</div>
-		
-			<div id="fiction_chapter_title"></div><!-- 标题栏 -->
+			<div id="fiction_chapter_title"></div>
+			<!-- 标题栏 -->		
 			<div id="fiction_container" class="m-read-content">
-				<h4>这是文章的章节</h4>
-				<p>
-				武侠小说并不单是让读者在阅读时做“白日梦”而沉缅在伟大成功的幻想之中，而希望读者们在幻想之时，想像自己是个好人，要努力做各种各样的好事，想像自己要爱国家、爱社会、帮助别人得到幸福，由于做了好事、作出积极贡献，得到所爱之人的欣赏和倾心。
-				武侠小说并不单是让读者在阅读时做“白日梦”而沉缅在伟大成功的幻想之中，而希望读者们在幻想之时，想像自己是个好人，要努力做各种各样的好事，想像自己要爱国家、爱社会、帮助别人得到幸福，由于做了好事、作出积极贡献，得到所爱之人的欣赏和倾心。
-				武侠小说并不单是让读者在阅读时做“白日梦”而沉缅在伟大成功的幻想之中，而希望读者们在幻想之时，想像自己是个好人，要努力做各种各样的好事，想像自己要爱国家、爱社会、帮助别人得到幸福，由于做了好事、作出积极贡献，得到所爱之人的欣赏和倾心。
-				</p>
-				<p>
-				武侠小说并不单是让读者在阅读时做“白日梦”而沉缅在伟大成功的幻想之中，而希望读者们在幻想之时，想像自己是个好人，要努力做各种各样的好事，想像自己要爱国家、爱社会、帮助别人得到幸福，由于做了好事、作出积极贡献，得到所爱之人的欣赏和倾心。
-				武侠小说并不单是让读者在阅读时做“白日梦”而沉缅在伟大成功的幻想之中，而希望读者们在幻想之时，想像自己是个好人，要努力做各种各样的好事，想像自己要爱国家、爱社会、帮助别人得到幸福，由于做了好事、作出积极贡献，得到所爱之人的欣赏和倾心。
-				</p>
-				<p>
-				武侠小说并不单是让读者在阅读时做“白日梦”而沉缅在伟大成功的幻想之中，而希望读者们在幻想之时，想像自己是个好人，要努力做各种各样的好事，想像自己要爱国家、爱社会、帮助别人得到幸福，由于做了好事、作出积极贡献，得到所爱之人的欣赏和倾心。
-				武侠小说并不单是让读者在阅读时做“白日梦”而沉缅在伟大成功的幻想之中，而希望读者们在幻想之时，想像自己是个好人，要努力做各种各样的好事，想像自己要爱国家、爱社会、帮助别人得到幸福，由于做了好事、作出积极贡献，得到所爱之人的欣赏和倾心。
-				武侠小说并不单是让读者在阅读时做“白日梦”而沉缅在伟大成功的幻想之中，而希望读者们在幻想之时，想像自己是个好人，要努力做各种各样的好事，想像自己要爱国家、爱社会、帮助别人得到幸福，由于做了好事、作出积极贡献，得到所爱之人的欣赏和倾心。
-				武侠小说并不单是让读者在阅读时做“白日梦”而沉缅在伟大成功的幻想之中，而希望读者们在幻想之时，想像自己是个好人，要努力做各种各样的好事，想像自己要爱国家、爱社会、帮助别人得到幸福，由于做了好事、作出积极贡献，得到所爱之人的欣赏和倾心。
-				</p>
-			</div><!-- 文章正文 -->
+
+			</div>
+			<!-- 文章正文 -->		
 			<div class="m-button-bar">
 				<ul class="u-tab">
 					<li id="prev-button">上一章</li>
 					<li id="next-button">下一章</li>
 				</ul>
-			</div><!-- 下一章上一章 -->
-
-			<!-- 底部菜单 -->
-		<div class="bottom-nav bottom-nav-bk"   style="display:none"></div>
-		<div id="bottom-nav" class="bottom-nav"  style="display:none">
-			<div class="bottom-nav-left" id="bottom-nav-left">
-				<div class="icon-content"></div>
-				<div class="nav-bottom-content">目录</div>
 			</div>
-			<div class="bottom-nav-mid" id="bottom-nav-mid">
-				<div class="icon-font-in"></div>
-				<div class="icon-font-on" style="display:none"></div>
-				<div class="nav-bottom-font">字体</div>
-			</div>
+			<!-- 下一章上一章 -->		
 
-			<div id="bottom-nav-right" class="bottom-nav-right">
-				<div class="bottom-nav-right-night" id="bottom-nav-right-night">
-					<div class="icon-night"></div>
-					<div class="nav-bottom-time">夜间</div>	
+			<!-- 底部菜单 -->		
+			<div class="bottom-nav bottom-nav-bk"   style="display:none"></div>
+			<div id="bottom-nav" class="bottom-nav"  style="display:none">
+				<div class="bottom-nav-left" id="bottom-nav-left">
+					<div class="icon-content"></div>
+					<div class="nav-bottom-content">目录</div>
+				</div>
+				<div class="bottom-nav-mid" id="bottom-nav-mid">
+					<div class="icon-font-in"></div>
+					<div class="icon-font-on" style="display:none"></div>
+					<div class="nav-bottom-font">字体</div>
 				</div>
 
-				<div class="bottom-nav-right-day" style="display:none" id="bottom-nav-right-day">
-					<div class="icon-daytime"></div>
-					<div class="nav-bottom-time">白天</div>
+				<div id="bottom-nav-right" class="bottom-nav-right">
+					<div class="bottom-nav-right-night" id="bottom-nav-right-night">
+						<div class="icon-night"></div>
+						<div class="nav-bottom-time">夜间</div>
+					</div>
+
+					<div class="bottom-nav-right-day" style="display:none" id="bottom-nav-right-day">
+						<div class="icon-daytime"></div>
+						<div class="nav-bottom-time">白天</div>
+					</div>
 				</div>
 			</div>
-			
+
+			<!-- 底部控制颜色字体大小 -->		
+			<div class="nav-panel-bk font-container" style="display:none"></div>
+			<!-- 背景 -->		
+			<div class="nav-panel font-container" id="font-container" style="display:none">
+				<div class="child-mod">
+					<span>字号</span>
+					<button id="large-font" class="font-size-button">大</button>
+					<button id="small-font" class="font-size-button">小</button>
+				</div>
+				<div class="child-mod">
+					<span>背景</span>
+					<div class="bk-container bk-btn-one" id="bk_1">
+						<div class="bk-container-current" id="current_1" style="display:none"></div>
+						<!-- 选中时会加一个圈 -->		
+					</div>
+
+					<div class="bk-container bk-btn-two" id="bk_2">
+						<div class="bk-container-current" id="current_2" style="display:none"></div>
+						<!-- 选中时会加一个圈 -->		
+					</div>
+
+					<div class="bk-container bk-btn-three" id="bk_3">
+						<div class="bk-container-current" id="current_3" style="display:none"></div>
+						<!-- 选中时会加一个圈 -->		
+					</div>
+
+					<div class="bk-container bk-btn-four"  id="bk_4">
+						<div class="bk-container-current" id="current_4" style="display:none"></div>
+						<!-- 选中时会加一个圈 -->		
+					</div>
+
+					<div class="bk-container bk-btn-five"  id="bk_5">
+						<div class="bk-container-current" id="current_5" style="display:none"></div>
+						<!-- 选中时会加一个圈 -->		
+					</div>
+				</div>
+			</div>
 		</div>
 
-		<!-- 底部控制颜色字体大小 -->
-		<div class="nav-panel-bk font-container" style="display:none"></div><!-- 背景 -->
-		<div class="nav-panel font-container" id="font-container" style="display:none">
-			<div class="child-mod">
-				<span>字号</span>
-				<button id="large-font" class="font-size-button">大</button>
-				<button id="small-font" class="font-size-button">小</button>
+		<!--目录页-->
+		<div class="catalog">
+			<div class="button-content">
+				<div class="back-button">返回</div>
 			</div>
-			<div class="child-mod">
-				<span>背景</span>
-				<div class="bk-container bk-btn-one" id="bk_1">
-					<div class="bk-container-current" id="current_1" style="display:none"></div><!-- 选中时会加一个圈 -->
-				</div>
-
-				<div class="bk-container bk-btn-two" id="bk_2">
-					<div class="bk-container-current" id="current_2" style="display:none"></div><!-- 选中时会加一个圈 -->
-				</div>
-
-				<div class="bk-container bk-btn-three" id="bk_3">
-					<div class="bk-container-current" id="current_3" style="display:none"></div><!-- 选中时会加一个圈 -->
-				</div>
-
-				<div class="bk-container bk-btn-four"  id="bk_4">
-					<div class="bk-container-current" id="current_4" style="display:none"></div><!-- 选中时会加一个圈 -->
-				</div>
-
-				<div class="bk-container bk-btn-five"  id="bk_5">
-					<div class="bk-container-current" id="current_5" style="display:none"></div><!-- 选中时会加一个圈 -->
-				</div>
+			<div class="cataloginfo">
+				<div class="chaptertotal"></div>
+				<div class="rorder">倒序</div>
 			</div>
+			<div class="catacontent"></div>
 		</div>
-	</div>
 		
 		<script src="lib/zepto.min.js"></script><!-- 使用zepto代替jquery在移动端使jq插件能用 -->
 		<script>
@@ -415,35 +482,65 @@
 			(function(){
 				var Util=(function(){
 					var prefix='html5_reader_';//localstorage在同一个域名下是共享的，需要区分
+
+					//封装localstorage的方法
 					var StorageGetter=function(key){
 						return localStorage.getItem(prefix+key);
 					}
+
 					var StorageSetter=function(key,val){
 						return localStorage.setItem(prefix+key,val);
 					}
+
+					//封装jsonp的方法
+					var getBSONP=function(url,callback){
+						return $.jsonp({
+							url:url,
+							cache:true,
+                            callback:'duokan_fiction_chapter',//jsonp的原理是把url作为一段js代码插入，callback就是函数名
+							success:function(result){
+								var data=$.base64.decode(result);//将返回的结果集进行解码
+								var json=decodeURIComponent(escape(data));//解析成json
+								callback(json);
+							},
+						})
+					}
+
 					return{
+						getBSONP:getBSONP,
 						StorageGetter:StorageGetter,
 						StorageSetter:StorageSetter
 					}
 				})();
 
+
+
+
 				var Dom={
 					top_nav:$("#top-nav"),
 					bottom_nav:$(".bottom-nav"),
 					font_container:$(".font-container"),
-					font_button:$("#bottom-nav-mid")
-
+					font_button:$("#bottom-nav-mid"),
+					
 				}//获取顶部底部两个菜单
 
 				//常用的变量
 				var Win=$(window);
  				var Doc=$(document);
+				var readerModer;//数据层渲染 转为全局变量
+				var readerUI;//主要UI渲染
+				var cataUI;//目录UI渲染
+				var recataUI;
+				var catalogo=$('.catacontent');
+
+
  				//初始化字号
  				var initFontSize=Util.StorageGetter("font_size");
  				initFontSize=parseInt(initFontSize);
  				if (!initFontSize) {initFontSize=14;}
+
  				var RootContainer=$('#fiction_container');
- 				var RootBKContainer=$('#root')
+ 				var RootBKContainer=$('#root');
  				//初始化背景颜色
  				var initBkColor=Util.StorageGetter("background_color");
  				if(!initBkColor){initBkColor="#e9dfc7";}
@@ -451,24 +548,172 @@
  				var initBtn=Util.StorageGetter("button_number");
  				initBtn=parseInt(initBtn);
  				if(!initBtn){initBtn=1;}
+ 				//初始化字体颜色
+ 				var RootTxColor=$('.m-read-content');
+ 				var initTColor=Util.StorageGetter("color");
+ 				if(!initTColor){initTColor="#000";}
+
+				var initChapterId=Util.StorageGetter("chapterid");
+				if(!initChapterId){initChapterId=1;}
+
  				//浏览器进入初始化
  				RootContainer.css("font-size",initFontSize);
- 				RootBKContainer.css("background-color",initBkColor)
+ 				RootBKContainer.css("background-color",initBkColor);
+ 				RootTxColor.css('color',initTColor);
  				$("#current_"+initBtn).show();
+
+
 
 				function main(){
 					// todo 整个项目的入口函数
-					EventHanlder();
+					readerModer=ReaderModel();//声明一个数据层函数对象
+					readerUI=ReaderBaseFrame(RootContainer);//return了一个function，此时readerUI是可传data的函数
+					recataUI=ReCataFrame(catalogo);
+					cataUI=ReaderCataFrame(catalogo);
+					readerModer.init(function(data){//初始化函数中，先取章节名和文本，然后使用UI回调函数将数据渲染进去
+						readerUI(data);
+					},function(catadata){
+						cataUI(catadata);
+					});
+                    EventHanlder();//执行UI交互操作
 				}
-
 
 				function ReaderModel(){
 					//todo 实现和阅读器相关的数据交互的方法
 
+					var Chapter_id;//声明一个章节的id
+					var Chapter_total;   //声明总共章节
+					var datastack;
+					//初始化函数
+					var init=function(UIcallback,CTcallback){
+
+						//初始化，先获取章节名，再获取文章，在通过UIcallback加入到dom中
+						getFictionInfo(function(){
+							getCurChapterContent(Chapter_id,function(data){
+								//todo
+								UIcallback&&UIcallback(data);
+							})
+						},CTcallback)
+
+					}
+
+
+                    //获取章节名
+					var getFictionInfo=function(callback,UIcallback){
+						$.get('data/chapter.json',function(data){
+							//todo 获得章节信息之后的回调
+							//这里的data参数就是json对象，包含了很多参数
+							datastack=data;
+							Chapter_id=data.chapters[initChapterId].chapter_id;
+							Chapter_total=data.chapters.length;
+
+							callback&&callback();
+							UIcallback&&UIcallback(data);
+						},'json');//ajax方法请求文件,不是真正的业务逻辑，可以仿照服务器的数据结构进行预调
+					}
+
+
+                    //获取章节内容，根据上面的章节名
+					var getCurChapterContent=function(chapter_id,callback){
+						$.get('data/data'+chapter_id+'.json',function(data){
+
+							if(data.result==0)//在返回字段设置一个标记，确认返回成果
+							{
+								var url=data.jsonp;//获取url使用jsonp打开，不然报错
+								Util.getBSONP(url,function(data){
+
+									callback && callback(data);//如果有回调函数把data传出去
+								});
+							}
+						},'json');
+					}
+
+					var prevChapter = function(UIcallback){
+						Chapter_id = parseInt(Chapter_id,10);
+						if(Chapter_id==0){
+							return;
+						}//上一章到了头的情况
+						Chapter_id-=1;
+						Util.StorageSetter('chapterid',Chapter_id);
+						getCurChapterContent(Chapter_id,UIcallback);
+					}
+
+					var nextChapter = function(UIcallback){
+						Chapter_id = parseInt(Chapter_id,10);
+						if(Chapter_id==Chapter_total){
+							return;
+						}
+						Chapter_id+=1;
+						Util.StorageSetter('chapterid',Chapter_id);
+						getCurChapterContent(Chapter_id,UIcallback);
+					}
+
+					var reChapter = function(UIcallback){
+							//todo 获得章节信息之后的回调
+							//这里的data参数就是json对象，包含了很多参数
+							UIcallback&&UIcallback(datastack);
+					}
+
+					var ovChapter = function(UIcallback){
+							//todo 获得章节信息之后的回调
+							//这里的data参数就是json对象，包含了很多参数
+							UIcallback&&UIcallback(datastack);
+					}
+
+					return{
+						init:init,
+						prevChapter:prevChapter,
+						nextChapter:nextChapter,
+						reChapter:reChapter,
+						ovChapter:ovChapter
+					}
 				}
 
-				function ReaderBaseFrame(){
+
+				function ReaderBaseFrame(container){
 					//todo 渲染基本的ui结构
+                    function parseChapterData(jsonData){
+                        var jsonObj = JSON.parse(jsonData);
+                        var html= '<h4>' + jsonObj.t +'</h4>';
+						for(var i=0;i<jsonObj.p.length;i++) {
+							html += '<p>' + jsonObj.p[i] + '</p>';
+						}
+					return html;
+                    }
+					return function(data){
+						container.html(parseChapterData(data));//闭包的用法
+					}
+				}
+
+				function ReaderCataFrame(container){
+					//todo 渲染基本的ui结构
+                    function parseChapterCata(Data){
+						var html='';
+						var total=Data.chapters.length;
+						for(var i=0;i<total;i++) {
+							html+='<div class="chaptername" title='+i+'>' +Data.chapters[i].title+ '</div>';
+						}
+						$(".chaptertotal").text("共计" +total+ "章");
+					return html;
+                    }
+					return function(data){
+						container.html(parseChapterCata(data));//闭包的用法
+					}
+				}
+
+				function ReCataFrame(container){
+					//todo 渲染基本的ui结构
+					function parseChapterCata(Data){
+						var html='';
+						var total=Data.chapters.length;
+						for(var i=total-1;i>=0;i--) {
+							html+='<div class="chaptername" title='+i+'>' +Data.chapters[i].title+ '</div>';
+						}
+						return html;
+					}
+					return function(data){
+						container.html(parseChapterCata(data));//闭包的用法
+					}
 				}
 
 				function EventHanlder(){
@@ -498,6 +743,19 @@
 							$(".icon-font-on").hide();
 						}
 					});
+					//唤出目录菜单
+					$('.bottom-nav-left').click(function(){
+						if($('.catalog').css("display")=='none'){
+							$('.catalog').css("display","block")
+						}else{
+							$('.catalog').css("display","none")
+						}
+					})
+
+					$(".back-button").click(function(){
+						$('.catalog').css("display","none")
+					})
+
 
 					//黑夜白天按钮切换
 					$("#bottom-nav-right").click(function(){
@@ -509,9 +767,7 @@
 							$("#bottom-nav-right-day").hide();
 							$("#bottom-nav-right-night").show();
 							turnToDay();
-						}
-
-						
+						}		
 					});		
 
 
@@ -529,25 +785,8 @@
 						Util.StorageSetter('font_size',initFontSize);
 					});
 
-					
+
 					//变换背景颜色
-
-
-					//封装成方法
-					// for(var i=1;i<=5;i++)
-					// {
-					// 	$("#bk_i").click(function(){
-					// 		$("#current_"+i).hide();
-					// 		if(i==1){initBkColor="#e9dfc7";}
-					// 		else if(i==2){initBkColor="#fff";}
-					// 		else if(i==3){initBkColor="#a4a4a4";}
-					// 		else if(i==4){initBkColor="#cdeecc";}
-					// 		else if(i==5){initBkColor="#2b3347";}
-					// 		RootContainer.css('background-color',initBkColor);
-					// 		$("#current_"+i).show();
-					// 	})
-					// }
-
 					function clear(){
 						for(var i=1;i<=$(".bk-container").length;i++)
 						$("#current_"+i).hide();
@@ -561,6 +800,9 @@
 						$("#current_1").show();//当前按钮设置成点击事件
 						Util.StorageSetter('background_color',initBkColor);
 						Util.StorageSetter('button_number',initBtn);
+						initTColor='#000';
+						RootTxColor.css('color',initTColor);
+						Util.StorageSetter('color',initTColor);
 					}
 
 					function turnToNight(){
@@ -571,9 +813,11 @@
 						$("#current_5").show();
 						Util.StorageSetter('background_color',initBkColor);
 						Util.StorageSetter('button_number',initBtn);
+						initTColor='#fff';
+						RootTxColor.css('color',initTColor);
+						Util.StorageSetter('color',initTColor);
 					}
 
-					
 
 					$("#bk_1").click(function(){
 						turnToDay();
@@ -583,10 +827,13 @@
 						clear();
 						initBkColor="#fff";
 						initBtn=2;
-						RootBKContainer.css('background-color',initBkColor);
-						$("#current_2").show();
-						Util.StorageSetter('background_color',initBkColor);
+						initTColor='#000';
+						RootBKContainer.css('background-color',initBkColor);//设置背景颜色
+						$("#current_2").show();//设置当前选中按钮
+						RootTxColor.css('color',initTColor);
+						Util.StorageSetter('background_color',initBkColor);//使用localstorage存入
 						Util.StorageSetter('button_number',initBtn);
+						Util.StorageSetter('color',initTColor);
 					});
 
 					$("#bk_3").click(function(){
@@ -595,6 +842,9 @@
 						initBtn=3;
 						RootBKContainer.css('background-color',initBkColor);
 						$("#current_3").show();
+						initTColor='#000';
+						RootTxColor.css('color',initTColor);
+						Util.StorageSetter('color',initTColor);
 						Util.StorageSetter('background_color',initBkColor);
 						Util.StorageSetter('button_number',initBtn);
 					});
@@ -607,6 +857,9 @@
 						$("#current_4").show();
 						Util.StorageSetter('background_color',initBkColor);
 						Util.StorageSetter('button_number',initBtn);
+						initTColor='#000';
+						RootTxColor.css('color',initTColor);
+						Util.StorageSetter('color',initTColor);
 					});
 
 					$("#bk_5").click(function(){
@@ -621,8 +874,34 @@
 						$(".icon-font-in").show();
 						$(".icon-font-on").hide();
 				 	});
-				}
 
+					$('#prev-button').click(function(){
+						readerModer. prevChapter(function(data){
+							readerUI(data);
+						});
+					})
+
+					$('#next-button').click(function(){
+						readerModer. nextChapter(function(data){
+							readerUI(data);
+						});
+					})
+					var itemp=0;
+					$(".rorder").click(function(){
+
+						if(itemp%2==0){
+						readerModer.reChapter(function(data) {
+							recataUI(data);})
+						}else{
+							readerModer.ovChapter(function(data){
+								cataUI(data)
+							})
+						}
+						itemp++;}
+						)
+
+
+				}
 				main();
 			}) ();//闭包，不污染全局变量
 
